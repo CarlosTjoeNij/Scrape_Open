@@ -1,6 +1,7 @@
 import pandas as pd
 from jobspy import scrape_jobs
 from supabase import create_client, Client
+import numpy as np
 
 # --- CONFIG ---
 SUPABASE_URL = "https://xzfvrjuxhacdytbvgkcg.supabase.co"
