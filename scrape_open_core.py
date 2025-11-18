@@ -48,6 +48,8 @@ df_linkedin = clean_df(pd.DataFrame(jobs_linkedin))
 # --- COMBINE ---
 alles = pd.concat([df_indeed, df_linkedin], ignore_index=True)
 alles["id"] = range(1, len(alles) + 1)
+alles = alles.replace([np.inf, -np.inf], None)
+alles = alles.where(pd.notnull(alles), None)
 
 # --- SAVE TO SUPABASE ---
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
