@@ -6,18 +6,18 @@ import numpy as np
 # --- CONFIG ---
 SUPABASE_URL = "https://xzfvrjuxhacdytbvgkcg.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6ZnZyanV4aGFjZHl0YnZna2NnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyNDE3ODksImV4cCI6MjA3NzgxNzc4OX0.SVw2abCoXakoRKgl5YyrD28fHKsnIvJmtfg5fY5ZeRc"
-TABLE_NAME = "carlos"
+TABLE_NAME = "carlos_linkedin_indeed"
 
 # --- HELPER ---
 def clean_df(df):
     df = df[['title', 'company', 'location', 'emails', 'job_url', 'date_posted']]
     df = df.rename(columns={
-        'title': 'Titel',
-        'company': 'Opdrachtgever',
-        'location': 'Plaats',
-        'emails': 'Email',
-        'job_url': 'Link',
-        'date_posted': 'Datum geplaatst'
+        'title': 'titel',
+        'company': 'opdrachtgever',
+        'location': 'locatie',
+        'emails': 'email',
+        'job_url': 'link',
+        'date_posted': 'datum_geplaatst'
     })
     return df[df['Titel'].str.contains('data', case=False, na=False)]
 
