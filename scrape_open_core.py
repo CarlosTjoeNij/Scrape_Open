@@ -19,7 +19,7 @@ def clean_df(df):
         'job_url': 'link',
         'date_posted': 'datum_geplaatst'
     })
-    return df[df['Titel'].str.contains('data', case=False, na=False)]
+    return df[df['titel'].str.contains('data', case=False, na=False)]
 
 
 # --- INDEED ---
