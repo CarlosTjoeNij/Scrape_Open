@@ -1,4 +1,10 @@
 jobspy
 pandas
-supabase
 numpy
+pymupdf
+nltk
+scikit-learn
+rapidfuzz
+pyarrow
+supabase
+streamlit
