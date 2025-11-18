@@ -1,22 +1,27 @@
-FROM python:3.11-slim
-
-# Install system dependencies (needed for pymupdf and nltk)
-RUN apt-get update && apt-get install -y \
-    libgl1 \
-    libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
+FROM python:3.10-slim
 
 WORKDIR /app
 
-# Install python packages
+# System packages for jobspy / lxml / playwright
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libxml2-dev \
+    libxslt-dev \
+    libgl1 \
+    libglib2.0-0 \
+    python3-dev \
+    wget \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install Python packages
 COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Download nltk stopwords
-RUN python -m nltk.downloader stopwords
-
-# Copy the rest of the code
+# Copy app code
 COPY . .
 
-# Run script
+# Run scraper
 CMD ["python", "scrape_open_core.py"]
