@@ -114,17 +114,4 @@ if len(new_rows) > 0:
 else:
     print("ℹ️ Geen nieuwe vacatures gevonden.")
 
-
-# MARK EXPIRED ROWS
-if len(expired_rows) > 0:
-    for _, row in expired_rows.iterrows():
-        supabase.table(TABLE_NAME).update({
-            "datum_gesloten": today_str
-        }).eq("id", row["id"]).execute()
-
-    print(f"⚠️ {len(expired_rows)} vacatures gemarkeerd als verlopen.")
-else:
-    print("✔️ Geen vacatures verdwenen sinds gisteren.")
-
-
 print("🏁 Klaar!")
